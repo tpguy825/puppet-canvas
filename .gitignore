@@ -1,5 +1,4 @@
 node_modules
-bin
 dist
 demo.ts
 .vscode
