@@ -7,6 +7,6 @@ export declare function releaseCanvas(canvas: EverythingNeedsAwaiting<HTMLCanvas
 export declare function close(): Promise<void>;
 export declare function loadFont(name: string, url: string, canvas: EverythingNeedsAwaiting<HTMLCanvasElement>): Promise<void>;
 export declare function loadImage(url: string, canvas: EverythingNeedsAwaiting<HTMLCanvasElement>, page?: Page): Promise<HTMLImageElement>;
-type EverythingNeedsAwaiting<Object> = {
+type EverythingNeedsAwaiting<Object> = Object extends string | number | symbol | bigint | boolean | null | undefined ? Promise<Object> : Object extends (...args: any) => any ? (...args: Parameters<Object>) => Promise<ReturnType<Object>> : {
 	[Key in keyof Object]: Object[Key] extends Record<string | number | symbol, any> ? EverythingNeedsAwaiting<Object[Key]> : Promise<Object[Key]>;
 }
